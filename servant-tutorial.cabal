@@ -1,0 +1,47 @@
+cabal-version:      2.4
+name:               servant-tutorial
+version:            0.1.0.0
+author:             Arian van Putten
+maintainer:         arian@feeld.co
+extra-source-files: CHANGELOG.md
+
+library
+  exposed-modules:
+    Api
+    Api.User
+    Api.Movie
+
+  build-depends:
+    , aeson
+    , base                 ^>=4.14.3.0
+    , servant              ^>=0.19
+    , servant-client       ^>=0.19
+    , servant-client-core  ^>=0.19
+    , servant-server       ^>=0.19
+    , wai
+
+  hs-source-dirs:   src
+  default-language: Haskell2010
+
+executable servant-tutorial-server
+  main-is:          Main.hs
+  build-depends:
+    , base              ^>=4.14.3.0
+    , servant-tutorial
+    , wai-extra
+    , warp
+
+  hs-source-dirs:   server
+  default-language: Haskell2010
+
+executable servant-tutorial-client
+  main-is:          Main.hs
+  build-depends:
+    , base              ^>=4.14.3.0
+    , http-client
+    , servant
+    , servant-client
+    , servant-tutorial
+
+  hs-source-dirs:   client
+  default-language: Haskell2010

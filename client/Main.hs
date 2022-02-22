@@ -48,9 +48,6 @@ someCallsNotNested = do
 -- Hard
 someCallsNested :: ClientM ()
 someCallsNested = do
-  -- Quite a bit of boiler plate. Need to create a client object for each
-  -- sub-api.  Cumbersome. That's why it's easier to just have one top-level
-  -- routes like we have in Feeld codebase
   let apiClient :: Api.Routes (AsClientT ClientM)
       apiClient = client Api.api
 
